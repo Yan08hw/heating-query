@@ -76,18 +76,18 @@
       const unit = unitInput.value.trim();
       const room = roomInput.value.trim();
 
-      if (!building || !unit || !room) {
-        result.innerHTML = '<div class="no-result">请填写全部查询条件。</div>';
-        return;
-      }
+    if (!building || !unit || !room) {
+      result.innerHTML = '<div class="no-result">请填写全部查询条件。</div>';
+      return;
+   }
 
-      const matched = data.filter(item =>
-        (item['楼栋名称']||'').trim() === building &&
-        (item['单元名称']||'').trim() === unit &&
-        (item['房间号']||'').trim() === room
-      );
-      renderTable(matched);
-    }
+    const matched = data.filter(item =>
+      (item['楼栋名称']||'').trim() === building &&
+      (item['单元名称']||'').trim() === unit &&
+      (item['房间号']||'').trim() === room
+    );
+    renderTable(matched);
+  }
 
     btn.addEventListener('click', doSearch);
     buildingInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') doSearch(); });
