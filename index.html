@@ -72,19 +72,19 @@
     }
 
     function doSearch() {
-      const building = buildingInput.value.trim().toLowerCase();
-      const unit = unitInput.value.trim().toLowerCase();
-      const room = roomInput.value.trim().toLowerCase();
+      const building = buildingInput.value.trim();
+      const unit = unitInput.value.trim();
+      const room = roomInput.value.trim();
 
-      if (!building && !unit && !room) {
-        result.innerHTML = '<div class="no-result">请输入查询条件。</div>';
+      if (!building || !unit || !room) {
+        result.innerHTML = '<div class="no-result">请填写全部查询条件。</div>';
         return;
       }
 
       const matched = data.filter(item =>
-        (item['楼栋名称']||'').toLowerCase().includes(building) &&
-        (item['单元名称']||'').toLowerCase().includes(unit) &&
-        (item['房间号']||'').toLowerCase().includes(room)
+        (item['楼栋名称']||'').trim() === building &&
+        (item['单元名称']||'').trim() === unit &&
+        (item['房间号']||'').trim() === room
       );
       renderTable(matched);
     }
